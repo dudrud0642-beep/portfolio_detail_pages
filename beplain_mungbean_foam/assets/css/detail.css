@@ -1,0 +1,1602 @@
+/* ==========================================================================
+   beplain 녹두 약산성 클렌징 폼 — 상세이미지 (폭 860px)
+   컨셉: 아이보리·세이지 바탕 + 딥 포레스트 그린, 포인트는 소프트 라임
+   폰트: G마켓 산스(큰 제목·숫자) / Pretendard(본문) / 고운바탕(포인트 문구)
+   ========================================================================== */
+
+@font-face {
+  font-family: "GmarketSans";
+  font-weight: 300;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  font-weight: 500;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  font-weight: 700;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
+}
+
+:root {
+  --pad: 60px;
+
+  --ivory: #f6f3ea;
+  --cream: #eeeadc;
+  --sage: #e2e9d3;
+  --sage-2: #cfdcb9;
+  --leaf: #86b84a;
+  --leaf-2: #6e9f35;
+  --forest: #1e3916;
+  --forest-2: #2b4d1f;
+  --lime: #d9f26a;
+  --lime-2: #ecf8b4;
+  --ink: #18210f;
+  --ink-2: #4b5642;
+  --muted: #8b9381;
+  --line: #dcdfd2;
+  --white: #ffffff;
+
+  --head: "GmarketSans", "Pretendard Variable", sans-serif;
+  --sans: "Pretendard Variable", Pretendard, sans-serif;
+  --serif: "Gowun Batang", serif;
+}
+
+/* Base ------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  width: 860px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 20px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+ul,
+ol,
+dl,
+figure {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+b {
+  font-weight: 700;
+  color: inherit;
+}
+
+button,
+.btn,
+.badge,
+.chip,
+.tag {
+  white-space: nowrap;
+}
+
+.nw {
+  white-space: nowrap;
+}
+
+.sent {
+  display: block;
+}
+
+.sprite {
+  display: none;
+}
+
+/* footnote marks: * and circled test numbers */
+.ast {
+  margin-left: 2px;
+  font-size: 0.45em;
+  vertical-align: 1.1em;
+  line-height: 0;
+}
+
+.ref {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--white);
+  vertical-align: super;
+}
+
+.on-dark .ref {
+  background: var(--white);
+  color: var(--forest);
+}
+
+/* Section frame ---------------------------------------------------------- */
+.sec {
+  position: relative;
+  overflow: hidden;
+  padding: 120px var(--pad);
+  text-align: center;
+}
+
+.on-dark {
+  color: var(--white);
+}
+
+.bg-ivory {
+  background: var(--ivory);
+}
+
+.bg-sage {
+  background: var(--sage);
+}
+
+.bg-forest {
+  background: var(--forest);
+}
+
+.bg-forest-2 {
+  background: var(--forest-2);
+}
+
+/* Heading kit */
+.point {
+  display: inline-block;
+  margin-bottom: 26px;
+  padding: 10px 22px 8px;
+  border-radius: 999px;
+  background: var(--forest);
+  font-family: var(--head);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--lime);
+}
+
+.on-dark .point {
+  background: var(--lime);
+  color: var(--forest);
+}
+
+.serif {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.on-dark .serif {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.h1 {
+  font-family: var(--head);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-family: var(--head);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.serif + .h1,
+.serif + .h2 {
+  margin-top: 10px;
+}
+
+.mark {
+  padding: 0 6px;
+  background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 92%, transparent 92%);
+}
+
+.lime {
+  color: var(--lime);
+}
+
+.leaf {
+  color: var(--leaf-2);
+}
+
+.copy {
+  margin-top: 34px;
+  font-size: 22px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.copy b {
+  color: var(--ink);
+}
+
+.on-dark .copy {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.on-dark .copy b {
+  color: var(--white);
+}
+
+.fn {
+  margin-top: 26px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.on-dark .fn {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.photo {
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.photo img {
+  width: 100%;
+}
+
+.card {
+  padding: 46px 40px 40px;
+  border-radius: 30px;
+  background: var(--white);
+  box-shadow: 0 18px 40px rgba(30, 57, 22, 0.08);
+}
+
+.card__title {
+  font-family: var(--head);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* Animated blocks are saved as GIFs — keep their backgrounds flat. */
+.motion {
+  position: relative;
+}
+
+/* Every animation inside [data-gif] runs once per loop; a small script restarts it. */
+[data-gif] * {
+  animation-fill-mode: both !important; /* the animation shorthands below would reset it */
+}
+
+/* ==========================================================================
+   01 HERO
+   ========================================================================== */
+.hero {
+  padding-top: 70px;
+  padding-bottom: 80px;
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory) 52%, var(--sage) 100%);
+}
+
+.hero__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--head);
+  color: var(--forest);
+}
+
+.hero__brand {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hero__en {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.hero__title {
+  margin-top: 70px;
+  font-family: var(--head);
+  font-size: 92px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--forest);
+}
+
+.hero__title .ast {
+  font-size: 0.32em;
+  vertical-align: 1.9em;
+}
+
+.hero__name {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 36px 12px;
+  border-radius: 999px;
+  background: var(--forest);
+  font-family: var(--head);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.hero__photo {
+  position: relative;
+  height: 900px;
+  margin-top: 56px;
+  overflow: hidden;
+  border-radius: 370px 370px 34px 34px;
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+.sticker {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--lime);
+  font-family: var(--head);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--forest);
+  rotate: -10deg;
+  box-shadow: 0 14px 30px rgba(30, 57, 22, 0.22);
+}
+
+.hero .sticker {
+  top: 170px;
+  left: 70px;
+}
+
+.checks {
+  position: absolute;
+  top: 210px;
+  right: 30px;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.checks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px 14px 16px;
+  border-radius: 999px;
+  background: var(--forest);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.checks i {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--forest);
+}
+
+.checks svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hero .fn {
+  margin-top: 22px;
+}
+
+/* ==========================================================================
+   02 BEST — 2천만 돌파
+   ========================================================================== */
+.best {
+  padding-bottom: 0;
+}
+
+.best .h1 {
+  font-size: 62px;
+}
+
+.odo {
+  margin-top: 54px;
+  padding: 10px 0;
+}
+
+.odo__row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.odo__digit {
+  position: relative;
+  width: 72px;
+  height: 106px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--lime);
+}
+
+.odo__strip {
+  display: flex;
+  flex-direction: column;
+  animation: odo-roll 2.2s cubic-bezier(0.25, 0.9, 0.3, 1) 0.2s 1;
+}
+
+.odo__strip span {
+  display: grid;
+  place-items: center;
+  height: 106px;
+  font-family: var(--head);
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--forest);
+  padding-top: 8px;
+}
+
+@keyframes odo-roll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--end));
+  }
+}
+
+.odo__comma {
+  width: 18px;
+  font-family: var(--head);
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 0.7;
+  color: var(--lime);
+}
+
+.odo .fn {
+  margin-top: 18px;
+  text-align: right;
+  padding-right: 34px;
+}
+
+.people {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 90px;
+}
+
+.people svg {
+  width: 92px;
+  height: 120px;
+}
+
+.people .on {
+  fill: var(--lime);
+}
+
+.people .off {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 3;
+}
+
+.best__three {
+  margin-top: 28px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.best__three b {
+  color: var(--lime);
+}
+
+.best__q {
+  margin-top: 80px;
+}
+
+.best__photo {
+  position: relative;
+  margin: 70px calc(var(--pad) * -1) 0;
+}
+
+.best__photo .fn {
+  margin: 0;
+  padding: 0 var(--pad) 20px;
+  text-align: right;
+}
+
+/* ==========================================================================
+   03 AWARDS
+   ========================================================================== */
+.awards__list {
+  display: grid;
+  gap: 14px;
+  margin-top: 56px;
+}
+
+.award {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 26px 34px;
+  border-radius: 24px;
+  background: var(--white);
+  text-align: left;
+}
+
+.award__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--forest);
+}
+
+.award__icon svg {
+  width: 56px;
+  height: 56px;
+}
+
+.award p {
+  font-size: 20px;
+  color: var(--ink-2);
+}
+
+.award h3 {
+  margin-top: 2px;
+  font-family: var(--head);
+  font-size: 38px;
+  letter-spacing: -0.02em;
+}
+
+.award--hero {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.award--hero p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.award--hero .award__icon {
+  background: var(--lime);
+}
+
+.award--hero .ref {
+  background: var(--white);
+  color: var(--forest);
+}
+
+/* ==========================================================================
+   04 SPEC — 다 되는 클렌징
+   ========================================================================== */
+.spec__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 54px;
+  text-align: left;
+}
+
+.spec__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 74px;
+  padding: 14px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.35;
+  animation: spec-on 0.4s ease-out 1;
+}
+
+.spec__item i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  animation: spec-check 0.4s ease-out 1;
+}
+
+.spec__item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--forest);
+}
+
+@keyframes spec-on {
+  from {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.45);
+  }
+  to {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+  }
+}
+
+@keyframes spec-check {
+  from {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  to {
+    background: var(--lime);
+    border-color: var(--lime);
+  }
+}
+
+.spec__big {
+  margin-top: 90px;
+}
+
+.spec__big .serif {
+  font-size: 28px;
+}
+
+.spec__photo {
+  margin-top: 60px;
+}
+
+/* ==========================================================================
+   05 POINT 01 — 모공
+   ========================================================================== */
+.swatch {
+  position: relative;
+  height: 560px;
+  margin-top: 50px;
+}
+
+.swatch__img {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px var(--white), 0 26px 50px rgba(30, 57, 22, 0.16);
+}
+
+.swatch__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swatch__dot {
+  position: absolute;
+  top: 330px;
+  left: 420px;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--forest);
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+.swatch__line {
+  position: absolute;
+  top: 342px;
+  left: 446px;
+  width: 120px;
+  border-top: 2px solid var(--forest);
+}
+
+.swatch__label {
+  position: absolute;
+  top: 296px;
+  right: 0;
+  padding: 18px 24px;
+  border-radius: 18px;
+  background: var(--forest);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--white);
+}
+
+.swatch__label b {
+  color: var(--lime);
+}
+
+.pore__bold {
+  margin-top: 4px;
+  font-family: var(--head);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.chart {
+  margin-top: 60px;
+}
+
+.chart svg {
+  display: block;
+  width: 620px;
+  height: 360px;
+  margin: 26px auto 0;
+  overflow: visible;
+}
+
+.axis-text {
+  font-family: var(--sans);
+  font-size: 15px;
+  fill: var(--muted);
+}
+
+.axis-line {
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.bar-label {
+  font-family: var(--sans);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--ink-2);
+}
+
+.bar-value {
+  font-family: var(--head);
+  font-size: 30px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.bar-before {
+  fill: var(--forest-2);
+}
+
+.bar-after {
+  fill: var(--leaf);
+}
+
+.bar-grow {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bar-grow 0.9s cubic-bezier(0.25, 0.9, 0.3, 1) 1;
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.pop {
+  animation: pop 0.5s ease-out 1;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.ba figure {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.ba img {
+  width: 100%;
+  aspect-ratio: 354 / 280;
+  object-fit: cover;
+}
+
+.ba figcaption {
+  padding: 13px 0 11px;
+  background: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.ba figure:last-child figcaption {
+  background: var(--lime);
+  color: var(--forest);
+}
+
+/* ==========================================================================
+   06 POINT 02 — 약산성
+   ========================================================================== */
+.gentle__sub {
+  margin-top: 90px;
+}
+
+.ph {
+  margin-top: 40px;
+  padding: 60px 40px 46px;
+}
+
+.ph__track {
+  position: relative;
+  height: 46px;
+  margin: 90px 20px 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff5a1f 0%, #ffc21a 21%, #c9e83a 36%, #7fd26a 47%, #2ec4b6 66%, #3a7bf0 82%, #9b5cf0 100%);
+}
+
+.ph__ticks {
+  position: relative;
+  height: 30px;
+  margin: 16px 20px 0;
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.ph__ticks span {
+  position: absolute;
+  left: calc(var(--v) / 14 * 100%);
+  translate: -50% 0;
+}
+
+.ph__marker {
+  position: absolute;
+  bottom: -14px;
+  left: calc(6 / 14 * 100%);
+  width: 0;
+  animation: ph-slide 1.8s cubic-bezier(0.3, 1.25, 0.4, 1) 0.3s 1;
+}
+
+@keyframes ph-slide {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(6 / 14 * 100%);
+  }
+}
+
+.ph__pin {
+  position: absolute;
+  bottom: 0;
+  left: -66px;
+  width: 132px;
+  white-space: nowrap;
+  padding: 10px 0 8px;
+  border-radius: 18px;
+  background: var(--forest);
+  font-family: var(--head);
+  color: var(--white);
+  box-shadow: 0 12px 26px rgba(30, 57, 22, 0.25);
+}
+
+.ph__pin::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  translate: -50% 0;
+  border: 10px solid transparent;
+  border-top-color: var(--forest);
+  border-bottom: 0;
+}
+
+.ph__pin small {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--lime);
+}
+
+.ph__pin strong {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.ph__tag {
+  margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--sage);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.ph__tag i {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--forest);
+}
+
+.gentle__strong {
+  margin-top: 30px;
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   07 ACNE + CALM
+   ========================================================================== */
+.acne {
+  position: relative;
+  margin-top: 56px;
+}
+
+.ring {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  margin: 0 auto;
+}
+
+.ring svg {
+  width: 360px;
+  height: 360px;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 26;
+}
+
+.ring-bar {
+  fill: none;
+  stroke: var(--lime);
+  stroke-width: 26;
+  stroke-linecap: round;
+  stroke-dasharray: 961.33;
+  animation: ring-fill 1.8s cubic-bezier(0.25, 0.9, 0.3, 1) 0.2s 1;
+}
+
+@keyframes ring-fill {
+  from {
+    stroke-dashoffset: 961.33;
+  }
+  to {
+    stroke-dashoffset: var(--off);
+  }
+}
+
+.ring__in {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+}
+
+.ring__in p {
+  font-size: 21px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ring__num {
+  font-family: var(--head);
+  font-size: 86px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.ring__num small {
+  font-size: 0.45em;
+}
+
+@property --n {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.count {
+  counter-reset: n var(--n);
+  font-variant-numeric: tabular-nums;
+  animation: count-up 1.8s cubic-bezier(0.25, 0.9, 0.3, 1) 0.2s 1;
+}
+
+.count::before {
+  content: counter(n);
+}
+
+@keyframes count-up {
+  from {
+    --n: 0;
+  }
+  to {
+    --n: var(--to);
+  }
+}
+
+.seal {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  display: grid;
+  place-content: center;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: inset 0 0 0 6px var(--forest), inset 0 0 0 9px var(--lime);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--forest);
+  rotate: 8deg;
+}
+
+.seal small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--head);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--leaf-2);
+}
+
+.calm {
+  margin-top: 130px;
+  padding-top: 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 116px repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 50px;
+  padding: 26px;
+  border-radius: 28px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.grid3__h {
+  padding: 10px 0 8px;
+  border-radius: 12px;
+  background: var(--sage);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.grid3__h--on {
+  background: var(--lime);
+}
+
+.grid3__row {
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.grid3 img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.grid3 .on {
+  box-shadow: 0 0 0 4px var(--lime);
+}
+
+/* ==========================================================================
+   08 WHY MUNG BEAN
+   ========================================================================== */
+.why {
+  background:
+    radial-gradient(circle, rgba(110, 159, 53, 0.16) 3px, transparent 4px) 0 0 / 34px 34px,
+    var(--sage);
+}
+
+.why__band {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 12px 28px 10px;
+  background: var(--forest);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.why__band b {
+  color: var(--lime);
+}
+
+.why .serif {
+  margin-top: 28px;
+  font-size: 28px;
+}
+
+.why .serif b {
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.why__photo {
+  margin-top: 56px;
+}
+
+.why__wisdom {
+  margin-top: 70px;
+}
+
+.chips {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
+.chips svg {
+  width: 22px;
+  height: 22px;
+  color: var(--leaf-2);
+}
+
+/* ==========================================================================
+   09 POINT 03 — 맑은 피부
+   ========================================================================== */
+.clear__badges {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.clear__badges li {
+  display: grid;
+  place-content: center;
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  background: var(--forest);
+  font-family: var(--head);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+  box-shadow: inset 0 0 0 6px var(--forest), inset 0 0 0 8px var(--lime);
+}
+
+.clear__badges small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--lime);
+}
+
+.polaroid {
+  width: 520px;
+  margin: 60px auto 0;
+  padding: 18px 18px 64px;
+  background: var(--white);
+  rotate: -2.5deg;
+  box-shadow: 0 24px 50px rgba(30, 57, 22, 0.18);
+}
+
+.clear__end {
+  margin-top: 60px;
+}
+
+/* ==========================================================================
+   10 POINT 04 — 촉촉함
+   ========================================================================== */
+.foam {
+  width: 700px;
+  margin: 56px auto 0;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.foam img {
+  width: 700px;
+  height: 560px;
+}
+
+.moist__res {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px dashed var(--line);
+}
+
+.moist__res p {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.moist__res strong {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--head);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.polyol {
+  margin-top: 110px;
+}
+
+.donut {
+  position: relative;
+  width: 330px;
+  height: 330px;
+  margin: 40px auto 0;
+}
+
+.donut svg {
+  width: 330px;
+  height: 330px;
+  transform: rotate(-90deg);
+}
+
+.donut-track {
+  fill: none;
+  stroke: var(--sage);
+  stroke-width: 30;
+}
+
+.donut-bar {
+  fill: none;
+  stroke: var(--leaf);
+  stroke-width: 30;
+  stroke-dasharray: 816.81;
+  animation: donut-fill 1.6s cubic-bezier(0.25, 0.9, 0.3, 1) 0.2s 1;
+}
+
+@keyframes donut-fill {
+  from {
+    stroke-dashoffset: 816.81;
+  }
+  to {
+    stroke-dashoffset: var(--off);
+  }
+}
+
+/* Text stays inside the ring's hole (diameter 230px) with room to spare. */
+.donut__in {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding-top: 6px;
+}
+
+.donut__in strong {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--head);
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--forest);
+}
+
+.donut__in strong small {
+  font-size: 0.5em;
+}
+
+.donut__in strong em {
+  margin-left: 6px;
+  font-size: 22px;
+  font-style: normal;
+  color: var(--ink-2);
+}
+
+.donut__in p {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.moist__end {
+  margin-top: 44px;
+}
+
+/* ==========================================================================
+   11 POINT 05 — 피부결
+   ========================================================================== */
+.smooth .ba {
+  margin-top: 56px;
+}
+
+/* ==========================================================================
+   12 HOW TO USE
+   ========================================================================== */
+.howto__en {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--leaf-2);
+}
+
+.step {
+  margin-top: 70px;
+}
+
+.step__no {
+  display: inline-block;
+  padding: 10px 26px 8px;
+  border-radius: 999px;
+  background: var(--forest);
+  font-family: var(--head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+.step p {
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.step__imgs {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.step__imgs--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.step__imgs img {
+  width: 100%;
+  border-radius: 22px;
+}
+
+.step__imgs--2 img {
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   13 INFO
+   ========================================================================== */
+.info {
+  padding-top: 100px;
+  text-align: left;
+}
+
+.info__product {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 36px 50px;
+  border-radius: 28px;
+  background: var(--sage);
+}
+
+.info__product img {
+  width: 110px;
+  rotate: -8deg;
+}
+
+.info__brand {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--leaf-2);
+}
+
+.info__product h2 {
+  margin-top: 4px;
+  font-family: var(--head);
+  font-size: 34px;
+}
+
+.info__vol {
+  margin-top: 6px;
+  font-family: var(--head);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.info__title {
+  margin-top: 80px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--head);
+  font-size: 32px;
+}
+
+.notice div {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.notice dt {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.notice dd {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.notice__ingr {
+  font-size: 15.5px !important;
+}
+
+.tests {
+  margin-top: 60px;
+  padding: 36px 40px;
+  border-radius: 24px;
+  background: var(--forest);
+  color: var(--white);
+}
+
+.tests__title {
+  font-family: var(--head);
+  font-size: 22px;
+}
+
+.tests ol {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.tests li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.tests li > b:first-child {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--lime);
+  font-size: 12px;
+  color: var(--forest);
+}
+
+.tests li strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.tests__awards {
+  display: grid;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.tests li .nw:not(:last-child)::after {
+  content: " ·";
+}
