@@ -1,0 +1,451 @@
+/*
+ * SIMMONS PORTFOLIO — LAYOUT (layout.css)
+ * Site header · mobile menu · quick menu (Kakao / chatbot / top) · footer
+ */
+
+/* Header ------------------------------------------------------------------ */
+.site-header {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  transition:
+    background 0.35s,
+    border-color 0.35s;
+}
+
+.site-header.is-scrolled,
+.site-header.is-open {
+  background: rgba(0, 0, 0, 0.94);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Utility links above the main nav */
+.utility-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+  padding-right: var(--pad);
+  padding-left: var(--pad);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.utility-bar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.utility-bar a {
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+/* Logo · main nav · actions */
+.nav-bar {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr) 90px;
+  align-items: center;
+  height: 72px;
+  padding-right: var(--pad);
+  padding-left: var(--pad);
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.brand img {
+  width: 128px;
+  height: auto;
+  /* Shows any logo file in white. */
+  filter: brightness(0) invert(1);
+}
+
+.primary-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: clamp(10px, 1.25vw, 22px);
+  font-size: clamp(10px, 0.84vw, 13px);
+  white-space: nowrap;
+}
+
+.primary-nav a {
+  transition: opacity 0.2s;
+}
+
+.primary-nav a:hover,
+.utility-bar a:hover {
+  opacity: 0.55;
+}
+
+.nav-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.nav-actions svg {
+  width: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* Hamburger + full-screen menu (shown at 1200px and below) */
+.menu-button {
+  display: none;
+  width: 28px;
+  padding: 5px 0;
+  border: 0;
+  background: none;
+}
+
+.menu-button span {
+  display: block;
+  height: 1px;
+  margin: 6px 0;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 111px 0 0;
+  display: none;
+  flex-direction: column;
+  padding: 40px var(--pad);
+  background: #000;
+}
+
+.mobile-menu p {
+  margin: 22px 0 4px;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.mobile-menu a {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(24px, 6vw, 42px);
+}
+
+@media (max-width: 1200px) {
+  .utility-bar,
+  .primary-nav,
+  .nav-actions a:first-child {
+    display: none;
+  }
+
+  .nav-bar {
+    grid-template-columns: 1fr auto 1fr;
+    height: 70px;
+  }
+
+  .brand {
+    justify-self: center;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-menu {
+    inset: 70px 0 0;
+  }
+
+  .site-header.is-open {
+    height: 100%;
+  }
+
+  .site-header.is-open .mobile-menu {
+    display: flex;
+  }
+
+  .site-header.is-open .menu-button span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .site-header.is-open .menu-button span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .brand img {
+    width: 118px;
+  }
+
+  .mobile-menu {
+    overflow-y: auto;
+  }
+
+  .mobile-menu a {
+    padding: 11px 0;
+    font-size: 20px;
+  }
+}
+
+/* Quick menu (Kakao · chatbot · back to top) ------------------------------ */
+.quick-menu {
+  position: fixed;
+  z-index: 60;
+  right: 28px;
+  bottom: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  transition: transform 0.45s var(--ease);
+  /* The box is as wide as the greeting tooltip; only the buttons take clicks
+     so its transparent area never blocks the event popup beside it. */
+  pointer-events: none;
+}
+
+.quick-menu .quick-button {
+  pointer-events: auto;
+}
+
+.quick-button {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.quick-button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.quick-button.kakao {
+  background: #fee500;
+}
+
+.quick-button.chatbot {
+  background: #35b968;
+}
+
+.quick-button.top {
+  position: fixed;
+  z-index: 61;
+  right: 28px;
+  bottom: 24px;
+  background: #fff;
+  color: #111;
+  font-size: 21px;
+}
+
+/* KakaoTalk mark drawn in SVG (index.html) instead of an image */
+.kakao-mark {
+  width: 34px;
+  fill: #000;
+}
+
+.kakao-mark text {
+  fill: #fee500;
+  stroke: #fee500;
+  stroke-width: 1.6px;
+  stroke-linejoin: round;
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.quick-tooltip {
+  max-width: 230px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  background: #fff;
+  color: #222;
+  font-size: 11px;
+  line-height: 1.5;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(12px);
+  transition: 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.quick-tooltip.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .quick-menu {
+    right: 16px;
+    bottom: 80px;
+  }
+
+  .quick-button.top {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* Mobile: no back-to-top button, so Kakao/chatbot drop into its place. */
+@media (max-width: 600px) {
+  .quick-menu {
+    bottom: 16px;
+  }
+
+  .quick-button.top,
+  .quick-tooltip {
+    display: none;
+  }
+}
+
+/* Footer ------------------------------------------------------------------ */
+.site-footer {
+  padding: 64px var(--pad) 28px;
+  background: #000;
+  border-top: 1px solid var(--line);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 48px;
+}
+
+.footer-top .brand {
+  font-size: clamp(30px, 4vw, 62px);
+}
+
+.footer-top p {
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1.6fr;
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-grid strong {
+  margin-bottom: 12px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+}
+
+.footer-grid a,
+.footer-grid p {
+  color: #888;
+  font-size: 14px;
+}
+
+.newsletter form {
+  display: flex;
+  width: 100%;
+  margin-top: 12px;
+  border-bottom: 1px solid #555;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 13px 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  outline: none;
+}
+
+.newsletter button {
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 28px;
+  color: #aaa;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.footer-bottom div {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom a {
+  color: #ccc;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 42px 28px;
+  }
+
+  .newsletter {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding-top: 40px;
+  }
+
+  .footer-top {
+    display: block;
+    padding-bottom: 28px;
+  }
+
+  .footer-top p {
+    margin-top: 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px 0;
+  }
+
+  .footer-bottom {
+    display: block;
+    line-height: 1.8;
+  }
+
+  .footer-bottom div {
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+}

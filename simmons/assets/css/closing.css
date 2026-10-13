@@ -1,0 +1,126 @@
+/*
+ * SIMMONS PORTFOLIO — CLOSING (closing.css)
+ * Final brand statement "Good nights. Better days." in outline lettering.
+ * main.js adds .is-counted when the block scrolls into view.
+ */
+.closing {
+  display: grid;
+  min-height: 76svh;
+  overflow: hidden;
+  place-items: center;
+  padding: clamp(64px, 8vw, 128px) 0;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 32%),
+    radial-gradient(circle at 50% 42%, #282522 0%, #111 40%, #000 72%);
+}
+
+.closing-copy {
+  width: min(1180px, calc(100vw - 80px));
+  margin: 0 auto;
+}
+
+.closing-copy > .eyebrow {
+  margin-bottom: clamp(36px, 6vh, 64px);
+  color: #a8a8a8;
+}
+
+.heritage-message {
+  overflow: hidden;
+}
+
+.closing h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(76px, 12.2vw, 182px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.76;
+  letter-spacing: -0.065em;
+}
+
+/* Outline lettering: hollow glyphs drawn with a thin stroke in the text colour.
+   font-synthesis: none stops a faux-bold pass from doubling the outline, and the
+   negative clip insets keep descenders (g, y) inside the reveal mask. */
+.closing h2 span,
+.closing h2 em {
+  display: block;
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: max(1px, 0.007em) currentColor;
+  font-family: inherit;
+  font-style: normal;
+  font-synthesis: none;
+  opacity: 0;
+  clip-path: inset(-0.3em 100% -0.3em 0);
+  transform: translateX(-42px);
+  transition:
+    opacity 0.85s linear,
+    clip-path 2s linear,
+    transform 1.65s ease-out;
+}
+
+.closing h2 em {
+  margin-top: 0.16em;
+  color: var(--cream);
+  font-style: italic;
+  font-weight: 400;
+  transition-delay: 0.28s;
+}
+
+.heritage-message > p {
+  margin: clamp(36px, 6vh, 64px) 0 0;
+  color: #b9b9b9;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s 0.18s,
+    transform 0.5s 0.18s var(--ease);
+}
+
+/* Revealed state */
+.closing-copy.is-counted h2 span,
+.closing-copy.is-counted h2 em {
+  clip-path: inset(-0.3em -0.1em -0.3em -0.1em);
+}
+
+.closing-copy.is-counted h2 span,
+.closing-copy.is-counted h2 em,
+.closing-copy.is-counted .heritage-message > p {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .closing {
+    min-height: 52svh;
+    padding: 56px 0;
+  }
+
+  .closing-copy > .eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .closing-copy {
+    width: calc(100vw - 40px);
+  }
+
+  .closing h2 {
+    font-size: clamp(64px, 23vw, 104px);
+    line-height: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing h2 span,
+  .closing h2 em,
+  .heritage-message > p {
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+  }
+}
