@@ -9,7 +9,7 @@ HTML/CSS로 디자인하고 브라우저로 JPG·GIF를 뽑아서, 문구를 바
 export/
 ├─ beplain_mungbean_foam_860.jpg   # 통이미지 1장 (860 × 25,455px, GIF 자리는 완성된 정지 화면)
 ├─ preview.html                    # 분할 이미지를 순서대로 이어 붙인 미리보기 (GIF 재생됨)
-└─ sections/                       # 쇼핑몰에 올리는 분할 이미지 29장 (JPG 22 + GIF 7)
+└─ sections/                       # 쇼핑몰에 올리는 분할 이미지 29장 (JPG 21 + GIF 8)
 ```
 
 - 쇼핑몰에는 `sections/`의 파일을 **파일명 순서대로** 올립니다. `02-1 → 02-2 → 02-3`처럼 한 섹션이 여러 장으로 나뉜 곳이 있습니다.
