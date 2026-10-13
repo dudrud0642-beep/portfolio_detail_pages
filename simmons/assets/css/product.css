@@ -53,6 +53,26 @@
   }
 }
 
+/* Phones: a slimmer fixed header leaves more of the short screen to the
+   page. Overrides the shared layout.css on this page only. */
+@media (max-width: 600px) {
+  .pd-page {
+    --pd-header: 54px;
+  }
+
+  .pd-page .nav-bar {
+    height: 54px;
+  }
+
+  .pd-page .brand img {
+    width: 100px;
+  }
+
+  .pd-page .mobile-menu {
+    inset: 54px 0 0;
+  }
+}
+
 /* Korean line breaking: keep-all comes from base.css. */
 .pd-page h1,
 .pd-page h2,
@@ -1789,6 +1809,25 @@
   scroll-snap-align: start;
 }
 
+/* Phones: shorter 4:3 photos keep each card's caption on screen with it. */
+@media (max-width: 600px) {
+  .pd-timeline:not(.is-scrub) .pd-moment {
+    width: 82vw;
+  }
+
+  .pd-timeline:not(.is-scrub) .pd-moment__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pd-moment h3 {
+    margin-top: 14px;
+  }
+
+  .pd-timeline__sticky {
+    padding-bottom: 28px;
+  }
+}
+
 /* Phone in landscape: landscape cards sized from the short screen height. */
 @media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
   .pd-timeline:not(.is-scrub) .pd-moment {
@@ -2232,7 +2271,44 @@
   }
 }
 
+/* Phones: a shorter gallery and tighter spacing bring the size choice
+   onto the first screen of the section. */
 @media (max-width: 600px) {
+  .pd-options {
+    padding-top: 28px;
+  }
+
+  .pd-options .pd-grid {
+    row-gap: 20px;
+  }
+
+  .pd-gallery__stage {
+    aspect-ratio: 2 / 1;
+  }
+
+  .pd-gallery__thumbs {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .pd-buy__title {
+    margin-top: 8px;
+    font-size: 28px;
+  }
+
+  .pd-firmness {
+    margin-top: 16px;
+    padding: 14px 0 16px;
+  }
+
+  .pd-firmness__scale {
+    margin-top: 12px;
+  }
+
+  .pd-sizes {
+    margin-top: 18px;
+  }
+
   .pd-sizes__list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2681,6 +2757,17 @@
 }
 
 body.menu-open .pd-dock {
+  visibility: hidden;
+}
+
+/* Open mobile menu: solid background (no page text showing through) and
+   the consult buttons step aside. */
+.pd-page .site-header.is-open {
+  background: #000;
+}
+
+body.menu-open .quick-menu,
+body.menu-open .quick-button.top {
   visibility: hidden;
 }
 
