@@ -27,9 +27,9 @@ simmons/
    │  ├─ closing.css       # 메인 사이트와 동일 (변경 없음)
    │  └─ product.css       # 상세페이지 전용, 모든 클래스 pd- 접두사
    ├─ js/
-   │  ├─ main.js           # 메인 사이트 공통 JS (1·9번 블록만 수정)
+   │  ├─ main.js           # 메인 사이트 공통 JS (1번 블록만 수정)
    │  └─ product.js        # 상세페이지 인터랙션
-   └─ images/              # WebP 13장 + 로고·챗봇 PNG, 전체 약 430KB
+   └─ images/              # WebP 13장 + 로고·챗봇·파비콘 PNG, 전체 약 440KB
 ```
 
 ## Sections

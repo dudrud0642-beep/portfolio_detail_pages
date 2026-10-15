@@ -3,11 +3,10 @@
  * Every block only runs if its element exists, so removing a section is safe.
  *
  * Shared with the main renewal site (simmons_portfolio/assets/js/main.js).
- * Two differences: block 1 also treats a pointer press as user input (a click
- * on an in-page link must not be undone by the load-time scroll reset), and
- * block 9 blocks placeholder links (href="#") instead of all links, so the
- * product page's in-page navigation works. Blocks 4, 5 and 7 find no element
- * on the product page and skip themselves.
+ * One difference: block 1 also treats a pointer press as user input (a click
+ * on an in-page link must not be undone by the load-time scroll reset).
+ * Block 9 (blocks placeholder links only, href="#") matches the main site.
+ * Blocks 4, 5 and 7 find no element on the product page and skip themselves.
  *
  *   0. Shared settings & helpers     5. Collections slider (autoplay)
  *   1. Page start (scroll reset)     6. Store carousel (swipe / drag / autoplay)
