@@ -1443,3 +1443,15 @@
     gap: calc(6 * var(--bp-u));
   }
 }
+
+/* Firefox draws the tilted seal's inset ring shadows broken on 2x screens (the
+   source shows it too), so in Firefox only the two rings are a border and an
+   outline instead: same look. */
+@supports (-moz-appearance: none) {
+  .bp-canvas .seal {
+    box-shadow: none;
+    border: calc(6 * var(--bp-u)) solid var(--forest);
+    outline: calc(3 * var(--bp-u)) solid var(--lime);
+    outline-offset: calc(-9 * var(--bp-u));
+  }
+}

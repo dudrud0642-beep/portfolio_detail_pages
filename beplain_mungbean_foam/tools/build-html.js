@@ -8,10 +8,14 @@
 //   - every style is scoped under .bp-canvas (safe to paste into a mall page)
 //   - every px becomes calc(N * var(--bp-u)), where --bp-u = container width
 //     / 860, so the layout scales like the image did, but as real text
+//   - on phones small text keeps a readable minimum size, with a few layout
+//     fixes for it (MOBILE_TEXT, STAMPS, PHONE_CSS); at 860px and up the page
+//     is pixel for pixel the same as the image
 //   - the odometer digits are written into the HTML (no script needed)
 //   - images get alt text; numbers drawn only by CSS/SVG get hidden text
 //     (.bp-sr) so search engines and AI can read them
-//   - product meta description and schema.org Product data
+//   - product meta description, link preview (Open Graph) and schema.org
+//     Product data
 //
 // Needs Node 18+, `npm i puppeteer-core css-tree` (prettier optional), and
 // Chrome or Edge. Usage (from beplain_mungbean_foam/): node tools/build-html.js
@@ -50,7 +54,13 @@ const ALT = {
   "tube.png": "비플레인 녹두 약산성 클렌징 폼 80ml 튜브",
 };
 
+// Where the page is published (GitHub Pages): link previews and schema.org
+// need full image addresses.
+const PAGE_URL = "https://dudrud0642-beep.github.io/portfolio_detail_pages/beplain_mungbean_foam/html/";
+const imageUrl = (file) => new URL(`../assets/images/${file}`, PAGE_URL).href;
+
 const PRODUCT = "비플레인 녹두 약산성 클렌징 폼";
+const TITLE = `${PRODUCT} 80ml | 상세 정보`;
 const DESCRIPTION =
   "비플레인 녹두 약산성 클렌징 폼(80ml). 국내산 녹두가루로 모공 속 노폐물과 피지까지 세정하는 pH 6 약산성 클렌징 폼. " +
   "2026년 5월 누적 입고량 기준 2,000만 개 돌파, 모공·피지·진정·세정 임상 시험 완료.";
@@ -59,7 +69,10 @@ const DESCRIPTION =
 // px) never goes under min(N, clamp(MIN, N × RATIO, MAX)), so at 860px and up
 // nothing changes and only small text on narrow screens grows.
 const MOBILE_TEXT = { min: 10, max: 14, ratio: 0.62 };
-const textFloor = (n) => Math.round(Math.min(n, Math.max(MOBILE_TEXT.min, Math.min(MOBILE_TEXT.max, n * MOBILE_TEXT.ratio))) * 100) / 100;
+const textFloor = (n) => {
+  const floor = Math.min(n, Math.max(MOBILE_TEXT.min, Math.min(MOBILE_TEXT.max, n * MOBILE_TEXT.ratio)));
+  return Math.round(floor * 100) / 100;
+};
 
 // Round stamps have a fixed size, so bigger text would spill out of them. On
 // phones the whole stamp grows with its text instead (its own --bp-u).
@@ -98,6 +111,21 @@ const PHONE_CSS = `
   .bp-canvas .notice div {
     grid-template-columns: 1fr;
     gap: calc(6 * var(--bp-u));
+  }
+}
+`;
+
+// Browser workaround; other browsers ignore it.
+const FIREFOX_CSS = `
+/* Firefox draws the tilted seal's inset ring shadows broken on 2x screens (the
+   source shows it too), so in Firefox only the two rings are a border and an
+   outline instead: same look. */
+@supports (-moz-appearance: none) {
+  .bp-canvas .seal {
+    box-shadow: none;
+    border: calc(6 * var(--bp-u)) solid var(--forest);
+    outline: calc(3 * var(--bp-u)) solid var(--lime);
+    outline-offset: calc(-9 * var(--bp-u));
   }
 }
 `;
@@ -231,14 +259,15 @@ function buildCss(source, svgOnly) {
 }
 
 `;
-  return header + csstree.generate(ast) + PHONE_CSS;
+  return header + csstree.generate(ast) + PHONE_CSS + FIREFOX_CSS;
 }
 
 // 2. HTML: take the rendered source, then add text and fix paths ------------
-const types = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".gif": "image/gif", ".woff": "font/woff" };
+const types = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp" };
 const server = http
   .createServer((req, res) => {
-    const file = path.join(root, decodeURIComponent(req.url.split("?")[0]) === "/" ? "index.html" : decodeURIComponent(req.url.split("?")[0]));
+    const url = decodeURIComponent(req.url.split("?")[0]);
+    const file = path.join(root, url === "/" ? "index.html" : url);
     if (!file.startsWith(root)) return res.writeHead(403), res.end();
     fs.readFile(file, (err, data) => {
       if (err) return res.writeHead(404), res.end();
@@ -288,15 +317,15 @@ if (!executablePath) throw new Error("Chrome / Edge not found: pass its path as 
     const odo = document.querySelector(".odo__row");
     if (odo) {
       odo.setAttribute("aria-hidden", "true");
-      odo.after(Object.assign(sr("20,000,000개"), { className: "bp-sr" }));
+      odo.after(sr("20,000,000개"));
     }
     // Numbers drawn by a CSS counter.
     document.querySelectorAll(".count").forEach((el) => el.append(sr(el.style.getPropertyValue("--to").trim())));
-    // Bar charts drawn in SVG: one sentence each.
-    const charts = [...document.querySelectorAll(".chart > svg")];
-    charts.forEach((svg) => {
+    // Bar charts drawn in SVG: one sentence each. The title sits above the
+    // chart (.card__title, ending in a footnote number) or under it (.moist__res).
+    document.querySelectorAll(".chart > svg").forEach((svg) => {
       const card = svg.closest(".chart");
-      const title = card.querySelector(".card__title")?.textContent.replace(/\d+$/, "").trim() || "피부 속 수분량";
+      const title = card.querySelector(".card__title, .moist__res p").textContent.replace(/\d+$/, "").trim();
       const values = [...svg.querySelectorAll(".bar-value")].map((t) => t.textContent.trim());
       const labels = [...svg.querySelectorAll(".bar-label")].map((t) => t.textContent.trim());
       svg.setAttribute("aria-hidden", "true");
@@ -335,7 +364,7 @@ if (!executablePath) throw new Error("Chrome / Edge not found: pass its path as 
     "@type": "Product",
     name: PRODUCT,
     brand: { "@type": "Brand", name: "beplain" },
-    image: ["../assets/images/tube.png", "../assets/images/model.jpg"],
+    image: [imageUrl("tube.png"), imageUrl("model.jpg")],
     description: DESCRIPTION,
     size: "80ml",
     countryOfOrigin: "한국",
@@ -343,7 +372,7 @@ if (!executablePath) throw new Error("Chrome / Edge not found: pass its path as 
 
   let html = `<!doctype html>
 <!--
-  beplain 녹두 약산성 클렌징 폼 — HTML 상세 (시안)
+  beplain 녹두 약산성 클렌징 폼 — HTML 상세
   tools/build-html.js 로 ../index.html 에서 생성합니다. 문구·디자인은 상세이미지 원본과 같고,
   글자가 이미지가 아닌 텍스트라 검색엔진과 AI가 읽을 수 있습니다. 직접 수정하지 말고 원본을 고친 뒤 다시 생성하세요.
   쇼핑몰에 넣을 때는 <article class="bp-detail"> 부분과 detail-html.css, 아래 폰트 링크를 함께 넣습니다.
@@ -352,8 +381,14 @@ if (!executablePath) throw new Error("Chrome / Edge not found: pass its path as 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${PRODUCT} 80ml | 상세 정보</title>
+    <title>${TITLE}</title>
     <meta name="description" content="${DESCRIPTION}" />
+    <link rel="canonical" href="${PAGE_URL}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${TITLE}" />
+    <meta property="og:description" content="${DESCRIPTION}" />
+    <meta property="og:image" content="${imageUrl("model.jpg")}" />
+    <meta property="og:url" content="${PAGE_URL}" />
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png" />
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />

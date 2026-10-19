@@ -1,7 +1,8 @@
-# beplain 녹두 약산성 클렌징 폼 — 상세이미지
+# beplain 녹두 약산성 클렌징 폼 — 상세이미지 · HTML 상세
 
 쇼핑몰 상품설명란에 올리는 **세로형 상세이미지(폭 860px)** 입니다.
 HTML/CSS로 디자인하고 브라우저로 JPG·GIF를 뽑아서, 문구를 바꾸면 바로 다시 만들 수 있습니다.
+같은 내용을 검색엔진과 AI가 읽을 수 있는 [HTML 상세페이지](https://dudrud0642-beep.github.io/portfolio_detail_pages/beplain_mungbean_foam/html/)로도 만들었습니다.
 
 ## 결과물
 
